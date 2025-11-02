@@ -1,6 +1,7 @@
 # Bayesian Prediction of Online Shoppers’ Purchasing Intention
 
 **Mini project for the Bayesian Data Analysis course**
+
 Author: *Liang-Jen Huang*
 
 ---
@@ -16,3 +17,5 @@ Model performance was evaluated using **PSIS-LOO**, and the best results came fr
 **Dataset:** `online_shoppers_intention.csv` [UCI Online Shoppers Purchasing Intention Dataset](https://archive.ics.uci.edu/ml/datasets/Online+Shoppers+Purchasing+Intention+Dataset)
 
 **Report:** `BSDA_LiangJen.pdf`
+
+**Code:** `analysis.R`
