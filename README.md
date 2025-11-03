@@ -16,6 +16,8 @@ Model performance was evaluated using **PSIS-LOO**, and the best results came fr
 
 **Dataset:** `online_shoppers_intention.csv` [UCI Online Shoppers Purchasing Intention Dataset](https://archive.ics.uci.edu/ml/datasets/Online+Shoppers+Purchasing+Intention+Dataset)
 
+**Code:** `analysis.R`
+
 **Report:** `BSDA_LiangJen.pdf`
 
-**Code:** `analysis.R`
+**Slides:** `BSDA_LiangJen_Slide.pdf`
