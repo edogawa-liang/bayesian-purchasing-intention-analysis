@@ -12,7 +12,7 @@ rstan_options(auto_write = TRUE)
 # -----------------------------------------------------------
 # 1. Load and preprocess data
 # -----------------------------------------------------------
-data <- read.csv("stan_code/online_shoppers_intention.csv")
+data <- read.csv("data/online_shoppers_intention.csv")
 
 # Factorize categorical variables
 cat_vars <- c("Month", "OperatingSystems", "Browser",
