@@ -12,7 +12,7 @@ rstan_options(auto_write = TRUE)
 # -----------------------------------------------------------
 # 1. Load and preprocess data
 # -----------------------------------------------------------
-data <- read.csv("mini_project/online_shoppers_intention.csv")
+data <- read.csv("stan_code/online_shoppers_intention.csv")
 
 # Factorize categorical variables
 cat_vars <- c("Month", "OperatingSystems", "Browser",
@@ -192,10 +192,10 @@ generated quantities {
 
 
 # output stan code
-writeLines(stan_code_pool, "mini_project/pool_logistic.stan")
-writeLines(stan_code_hier, "mini_project/hier_logistic.stan")
-writeLines(stan_code_hier_2, "mini_project/hier_2group_logistic.stan")
-writeLines(stan_code_hier_2_lasso, "mini_project/hier_2group_logistic_lasso.stan")
+writeLines(stan_code_pool, "stan_code/pool_logistic.stan")
+writeLines(stan_code_hier, "stan_code/hier_logistic.stan")
+writeLines(stan_code_hier_2, "stan_code/hier_2group_logistic.stan")
+writeLines(stan_code_hier_2_lasso, "stan_code/hier_2group_logistic_lasso.stan")
 
 
 # -----------------------------------------------------------
@@ -208,14 +208,14 @@ fit_model <- function(model_name, hier_var = NULL) {
     # Pooled model
     X <- model.matrix(Revenue ~ . - 1, data = data)
     stan_data <- list(N = nrow(X), K = ncol(X), X = X, y = y)
-    stan_file <- "mini_project/pool_logistic.stan"
+    stan_file <- "stan_code/pool_logistic.stan"
   } else {
     # Hierarchical model
     X <- model.matrix(as.formula(paste("Revenue ~ . -", hier_var)), data = data)[, -1]
     group <- as.integer(data[[hier_var]])
     stan_data <- list(N = nrow(X), K = ncol(X), J = length(unique(group)),
                       group_id = group, X = X, y = y)
-    stan_file <- "mini_project/hier_logistic.stan"
+    stan_file <- "stan_code/hier_logistic.stan"
   }
   
   cat("\n-----------------------------------------------------------\n")
@@ -251,9 +251,9 @@ fit_model_two_groups <- function(model_name, hier_vars, use_lasso = FALSE) {
   )
   
   stan_file <- if (use_lasso) {
-    "mini_project/hier_2group_logistic_lasso.stan"
+    "stan_code/hier_2group_logistic_lasso.stan"
   } else {
-    "mini_project/hier_2group_logistic.stan"
+    "stan_code/hier_2group_logistic.stan"
   }
   
   fit <- stan(file = stan_file, data = stan_data,
@@ -378,7 +378,7 @@ appendix_tbl$Rhat <- round(appendix_tbl$Rhat, 2)
 # Print and export the final appendix table
 cat("\n===== Appendix Table: Posterior parameter summary (MCSE-based rounding, no log_lik) =====\n")
 print(appendix_tbl, row.names = FALSE)
-write.csv(appendix_tbl, "mini_project/appendix_posterior_summary.csv", row.names = FALSE)
+write.csv(appendix_tbl, "stan_code/appendix_posterior_summary.csv", row.names = FALSE)
 
 
 # 6. Check
