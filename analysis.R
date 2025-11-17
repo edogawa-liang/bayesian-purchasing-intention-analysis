@@ -378,7 +378,7 @@ appendix_tbl$Rhat <- round(appendix_tbl$Rhat, 2)
 # Print and export the final appendix table
 cat("\n===== Appendix Table: Posterior parameter summary (MCSE-based rounding, no log_lik) =====\n")
 print(appendix_tbl, row.names = FALSE)
-write.csv(appendix_tbl, "stan_code/appendix_posterior_summary.csv", row.names = FALSE)
+write.csv(appendix_tbl, "appendix/appendix_posterior_summary.csv", row.names = FALSE)
 
 
 # 6. Check
